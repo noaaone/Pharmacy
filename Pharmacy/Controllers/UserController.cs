@@ -104,7 +104,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Пополнение суммой  = " + request.SumOfDep + " успешно");
             return Ok("Пополнение суммой  = " + request.SumOfDep + " успешно");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Депозит отменен");
             return BadRequest("Депозит отменен");
@@ -155,7 +155,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Карта добавлена");
             return Ok("Карта добавлена");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Невозможно добавить карту");
             return BadRequest("Невозможно добавить карту");
@@ -189,7 +189,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Карта с id = " + id + " удалена");
             return Ok("Карта с id = " + id + " удалена");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Карта с id = " + id + "не удалена");
             return Ok("Карта с id = " + id + "не удалена");
@@ -219,7 +219,7 @@ public class UserController : ControllerBase
         _logger.LogInformation("Мнение куплено");
         return Ok("Мнение куплено");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Невозможно купить мнение");
             return BadRequest("Невозможно купить мнение");
@@ -240,7 +240,7 @@ public class UserController : ControllerBase
 
             return Ok(sr.GetExpertView(itemId));
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Невозможно получить мнение");
             return BadRequest("Невозможно получить мнение");
@@ -265,7 +265,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Подписка успешна");
             return Ok("Подписка успешна");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Невозможно подписаться");
             return BadRequest("Невозможно подписаться");
@@ -282,7 +282,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Отписка успешна");
             return Ok("Отписка успешна");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Невозможно отписаться");
             return BadRequest("Невозможно отписаться");
@@ -299,7 +299,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Уведоление удалено");
             return Ok("Уведоление удалено");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Уведоление не удалено");
             return BadRequest("Уведоление не удалено");
@@ -321,7 +321,7 @@ public class UserController : ControllerBase
             _logger.LogInformation("Лист уведомлений доступен");
             return Ok(notifications);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation(" Лист уведомлений недоступен");
             return Ok(" Лист уведомлений недоступен");
@@ -373,10 +373,60 @@ public class UserController : ControllerBase
             _logger.LogInformation("Количество уведомлений равно " + number);
             return Ok(number);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogInformation("Посчитать количество уведомлений не удалось");
             return BadRequest("Посчитать количество уведомлений не удалось");
         }
+    }
+    
+    [HttpPost, Route("AddItemToBasket")]
+    public async Task<ActionResult> AddItemToBasket([FromBody]AddItemToBasketRequest request)
+    {
+        try
+        {
+            ItemsRepository itemsRepository = new ItemsRepository();
+            itemsRepository.AddItemToBasket(request);
+            _logger.LogInformation("Товар добавлен в корзину");
+            return Ok("Товар добавлен в корзину");
+        }
+        catch (Exception)
+        {
+            _logger.LogInformation("Не удалось добавить товар в корзину");
+            return BadRequest("Не удалось добавить товар в корзину");
+        }
+    }
+    
+    [HttpDelete, Route("DeleteItemFromBasket")]
+    public async Task<ActionResult> DeleteItemFromBasket(int id)
+    {
+        try
+        {
+            var ir = new ItemsRepository();
+            ir.DeleteItemFromBasket(id);
+            return Ok("Товар удален из корзины");
+        }
+        catch (Exception)
+        {
+            _logger.LogInformation("Не удалось удалить товар из корзины");
+            return BadRequest("Не удалось удалить товар из корзины");
+        }
+    }
+    
+    [HttpPost, Route("CreateOrder")]
+    public async Task<ActionResult> CreateOrder(int userId)
+    {
+        
+            ItemsRepository itemsRepository = new ItemsRepository();
+            itemsRepository.CreateOrder(userId);
+            _logger.LogInformation("Заказ сформирован");
+            return Ok("Заказ сформирован");
+    }
+    [HttpGet, Route("GetUserBasket")]
+    public async Task<ActionResult> GetUserBasket(int userId)
+    {
+        ItemsRepository itemsRepository = new ItemsRepository();
+        _logger.LogInformation("одержимое корзины получено");
+        return Ok(itemsRepository.GetAllBasket(userId));
     }
 }

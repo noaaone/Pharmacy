@@ -37,3 +37,4 @@ C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\Pharmacy.pdb
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\Pharmacy.genruntimeconfig.cache
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\ref\Pharmacy.dll
+C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\Pharmacy.sourcelink.json

@@ -207,6 +207,11 @@ public class AdminController : ControllerBase
                     _logger.LogInformation("Цена должна быть положительной");
                     return UnprocessableEntity("Цена должна быть положительной");
                 }
+                if (request.Quantity < 0)
+                {
+                    _logger.LogInformation("Количество должно быть положительным");
+                    return UnprocessableEntity("Количество должно быть положительным");
+                }
                 var ar = new AdminRepository();
                 if (ar.IsThereThisManufacturer(request.ManufacturerId) == false)
                 {
@@ -220,9 +225,9 @@ public class AdminController : ControllerBase
                     return UnprocessableEntity("Цена экспертного мнения должна быть положительной");
                 }
                 var sr = new ItemsRepository();
-                sr.WriteItemToDataBase(request.ItemName, request.ManufacturerId, request.Price, request.ExpertView, request.ExpertViewPrice);
+                sr.WriteItemToDataBase(request.ItemName, request.ManufacturerId, request.Price,request.Quantity, request.ExpertView, request.ExpertViewPrice);
                 sr.AddRecentPrice(new Item(1,request.ItemName, request.ManufacturerId,
-                   request.Price, request.ExpertView, request.ExpertViewPrice));
+                   request.Price, request.Quantity, request.ExpertView, request.ExpertViewPrice));
                 
                 _logger.LogInformation("Товар добавлен");
                 return Ok("Товар добавлен");
@@ -237,8 +242,8 @@ public class AdminController : ControllerBase
         [HttpPut, Route("ChangePriceOfItem")]
         public async Task<ActionResult> ChangePriceOfItem([FromBody] AddChangePriceRequest request)
         {
-            // try
-            // {
+             try
+             {
                 if (request.Price < 0)
                 {
                     return UnprocessableEntity("Цена должна быть положительной");
@@ -254,12 +259,12 @@ public class AdminController : ControllerBase
                 sr.AddRecentPrice(sr.GetItemById(request.Id));
                 _logger.LogInformation("Цена товара с id = " + request.Id + " равна " + request.Price);
                 return Ok("Цена товара с id = " + request.Id + " равна " + request.Price);
-            /*}
+            }
             catch (Exception e)
             {
              _logger.LogInformation("Цена не изменена");
                 return BadRequest("Цена не изменена");
-            }*/
+            }
         }
 
         [HttpGet, Route("GetRecentPricesList")]
@@ -411,5 +416,29 @@ public class AdminController : ControllerBase
             }
             
         }
+
+        [HttpGet, Route("GetAllOrders")]
+        public async Task<ActionResult> GetAllOrders()
+        {
+            var ar = new ItemsRepository();
+            _logger.LogInformation("Список заказов получен");
+            return Ok(ar.GetAllOrders());
+        }
         
+        [HttpPut, Route("EditOrderStatus")]
+        public async Task<ActionResult> EditOrderStatus([FromBody] EditOrderStatusRequest request)
+        {
+            var ar = new AdminRepository();
+                ar.EditOrderStatus(request);
+                _logger.LogInformation("Статус изменен");
+                return Ok("Статус изменен");
+        }
+        [HttpDelete, Route("DeleteOrder")]
+        public async Task<ActionResult> DeleteOrder(int orderId)
+        {
+            var ar = new AdminRepository();
+            ar.DeleteOrder(orderId);
+            _logger.LogInformation("Заказ удален");
+            return Ok("Заказ удален");
+        }
 }

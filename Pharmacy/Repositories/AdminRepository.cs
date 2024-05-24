@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Pharmacy_.DTO;
 using Pharmacy_.Models;
 
 namespace Pharmacy_.Repositories;
@@ -335,5 +336,28 @@ public class AdminRepository : RepositoryBase
         connection.Close(); // закрываем подключение
         return purchases;
         
+    }
+
+    public void EditOrderStatus(EditOrderStatusRequest request)
+    {
+        using var connection = new NpgsqlConnection(connectionString);
+        var sql = "UPDATE pharmacy.order SET status " +
+                  "= @status WHERE id = @id";
+        using var command = new NpgsqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@id", request.OrderId);
+        command.Parameters.AddWithValue("@status", request.Status);
+        OpenConnection(connection);
+        command.ExecuteNonQuery();
+        CloseConnection(connection);
+    }
+    public void DeleteOrder(int orderId)
+    {
+        using var connection = new NpgsqlConnection(connectionString);
+        var sql = "Delete from pharmacy.order WHERE id = @id";
+        using var command = new NpgsqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@id", orderId);
+        OpenConnection(connection);
+        command.ExecuteNonQuery();
+        CloseConnection(connection);
     }
 }
