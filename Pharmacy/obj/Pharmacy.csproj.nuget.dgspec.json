@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj": {}
+    "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj": {
+    "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj",
         "projectName": "Pharmacy",
-        "projectPath": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj",
-        "packagesPath": "C:\\Users\\shved\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shved\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

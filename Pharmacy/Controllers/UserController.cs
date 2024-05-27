@@ -426,7 +426,7 @@ public class UserController : ControllerBase
     public async Task<ActionResult> GetUserBasket(int userId)
     {
         ItemsRepository itemsRepository = new ItemsRepository();
-        _logger.LogInformation("одержимое корзины получено");
+        _logger.LogInformation("Содержимое корзины получено");
         return Ok(itemsRepository.GetAllBasket(userId));
     }
 }

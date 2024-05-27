@@ -144,9 +144,6 @@ public class AdminRepository : RepositoryBase
         command.ExecuteNonQuery();
         CloseConnection(connection);
     }
-    
-   
-    
     public bool IsThereThisManufacturer(int manufacturerId)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);

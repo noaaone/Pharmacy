@@ -649,19 +649,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shved\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj",
       "projectName": "Pharmacy",
-      "projectPath": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\Pharmacy.csproj",
-      "packagesPath": "C:\\Users\\shved\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shved\\OneDrive\\Рабочий стол\\Pharmacy\\Pharmacy+\\Pharmacy\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\Pharmacy.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Pharmacy\\Pharmacy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\shved\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -736,5 +736,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.1.23463.5\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Npgsql' 8.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-x9vc-6hfv-hg8c",
+      "libraryId": "Npgsql",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

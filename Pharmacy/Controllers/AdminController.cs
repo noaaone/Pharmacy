@@ -273,6 +273,33 @@ public class AdminController : ControllerBase
                 return BadRequest("Цена не изменена");
             }
         }
+    
+        [HttpPut, Route("ChangeQuantityOfItem")]
+        public async Task<ActionResult> ChangeQuantityOfItem([FromBody] ChangeQuantityRequest request)
+        {
+            try
+            {
+                if (request.Quantity < 0)
+                {
+                    return UnprocessableEntity("Количество должно быть положительным");
+                }
+                var sr = new ItemsRepository();
+                var or = new ObserverRepository();
+                if (request.Quantity == sr.GetItemById(request.Id).Quantity)
+                {
+                    _logger.LogInformation("Количество должно отличаться");
+                    return UnprocessableEntity("Количество должно отличаться");
+                }
+                sr.ChangeQuantityOfItem(request.Id, request.Quantity);
+                _logger.LogInformation("Количество товара с id = " + request.Id + " равно " + request.Quantity);
+                return Ok("Количество товара с id = " + request.Id + " равно " + request.Quantity);
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation("Количество не изменено");
+                return BadRequest("Количество не изменено");
+            }
+        }
 
         [HttpGet, Route("GetRecentPricesList")]
         public async Task<ActionResult> GetRecentPricesList(int id)

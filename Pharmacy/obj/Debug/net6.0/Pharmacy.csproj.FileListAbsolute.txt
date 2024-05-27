@@ -38,3 +38,43 @@ C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\Pharmacy.genruntimeconfig.cache
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\ref\Pharmacy.dll
 C:\Users\shved\OneDrive\Рабочий стол\Pharmacy\Pharmacy+\Pharmacy\obj\Debug\net6.0\Pharmacy.sourcelink.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\appsettings.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Pharmacy.exe
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Pharmacy.deps.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Pharmacy.runtimeconfig.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Pharmacy.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Pharmacy.pdb
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Npgsql.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.AssemblyInfo.cs
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.sourcelink.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets\msbuild.Pharmacy.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets\msbuild.build.Pharmacy.props
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Pharmacy.props
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Pharmacy.props
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\scopedcss\bundle\Pharmacy.styles.css
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.csproj.CopyComplete
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\refint\Pharmacy.dll
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.pdb
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\Pharmacy.genruntimeconfig.cache
+C:\Users\User\Desktop\Pharmacy\Pharmacy\obj\Debug\net6.0\ref\Pharmacy.dll

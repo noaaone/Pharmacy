@@ -264,13 +264,9 @@ public class ItemsRepository : RepositoryBase
         OpenConnection(connection);
         command.ExecuteNonQuery();
         CloseConnection(connection);
-        
-        foreach (var b in GetAllBasket(request.UserId))
-        {
-            var item1 = GetItemById(b.ItemId);
-            UpdateItem(b.ItemId, item1.Quantity - b.Quantity);
+        var item1 = GetItemById(request.ItemId);
+        UpdateItem(request.ItemId, item1.Quantity - request.Quantity);
         }
-    }
 
     public Basket GetBasketItemById(int id)
     {
@@ -376,7 +372,7 @@ public class ItemsRepository : RepositoryBase
         foreach (var b in GetAllBasket(userId))
         {
             var item = GetItemById(b.ItemId);
-            order += $"{item.ItemName} в количестве {b.Quantity} по цене {b.Price}\n";
+            order += $"{item.ItemName} в количестве {b.Quantity} по цене {b.Price}. \n";
             fullPrice += b.Price * b.Quantity;
         }
         WriteOrderToDatabase(userId, order, fullPrice);
@@ -398,6 +394,20 @@ public class ItemsRepository : RepositoryBase
         OpenConnection(connection);
         command.ExecuteNonQuery();
         CloseConnection(connection);
+    }
+    public void ChangeQuantityOfItem(int itemId, double quantity)
+    {
+        const string connectionString = "Host=localhost;Port=5432;Database=Pharmacy;Username=postgres;Password=postgres;";
+        var connection = new NpgsqlConnection(connectionString);
+        var sr = new SubjectRepository();
+        ItemsRepository repository = new ItemsRepository();
+        var sql = "UPDATE pharmacy.items SET quantity = @quantity WHERE id = @id";
+        var command = new NpgsqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@id", itemId);
+        command.Parameters.AddWithValue("@quantity", quantity);
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
     }
 
     public void UpdateItem(int itemId, int quantity)
