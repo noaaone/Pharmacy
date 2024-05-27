@@ -63,6 +63,33 @@ public class ItemsRepository : RepositoryBase
         return null;
     }
     
+    public Item GetItemByItemName(string name)
+    {
+        var connection = new NpgsqlConnection(connectionString);
+        var sql = "SELECT * FROM pharmacy.items WHERE @name = item_name";
+        connection.Open();
+        using (var command = new NpgsqlCommand(sql,connection))
+        {
+            command.Parameters.AddWithValue("@name",name);
+            using(var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string name1 = reader.GetString(1);
+                    int manufacturerId = reader.GetInt32(2);
+                    double price = reader.GetDouble(3);
+                    string view = reader.GetString(4);
+                    double priceOfView = reader.GetDouble(5);
+                    int quantity = reader.GetInt32(6);
+                    connection.Close();
+                    return new Item(id, name1, manufacturerId, price, quantity, view, priceOfView);
+                }
+            }
+        }
+        connection.Close();
+        return null;
+    }
     public void DeleteItem(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);

@@ -17,14 +17,14 @@ namespace Pharmacy_.Controllers
         }
 
         [HttpPost("HandleFileUpload/{userId}")]
-        public async Task<IActionResult> HandleFileUpload([FromRoute] Guid userId, [FromForm] IFormFile file, [FromQuery] int role)
+        public async Task<IActionResult> HandleFileUpload([FromRoute] int userId, [FromForm] IFormFile file, [FromQuery] int role)
         {
             await _photoService.SavePhotoAsync(userId, file.OpenReadStream(), role);
             return Ok("Файл успешно загружен!");
         }
 
         [HttpGet("GetPhoto/{userId}")]
-        public async Task<IActionResult> GetPhoto([FromRoute] Guid userId, [FromQuery] int role)
+        public async Task<IActionResult> GetPhoto([FromRoute] int userId, [FromQuery] int role)
         {
             var photoStream = await _photoService.GetPhotoAsync(userId, role);
             return File(photoStream, "image/jpeg");

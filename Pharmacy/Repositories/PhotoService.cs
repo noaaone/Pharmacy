@@ -12,11 +12,11 @@ public class PhotoService : IPhotoService
             _logger = logger;
         }
 
-        public async Task SavePhotoAsync(Guid userId, Stream fileStream, int role)
+        public async Task SavePhotoAsync(int userId, Stream fileStream, int role)
         {
             try
             {
-                string location = role == 2 ? $"item/{userId}" : $"manufacturer/{userId}";
+                string location = role == 3 ? $"item/{userId}" : $"manufacturer/{userId}";
                 string userDir = Path.Combine(_rootLocation, location);
                 Directory.CreateDirectory(userDir);
 
@@ -41,17 +41,17 @@ public class PhotoService : IPhotoService
             }
         }
 
-        public async Task<Stream> GetPhotoAsync(Guid userId, int role)
+        public async Task<Stream> GetPhotoAsync(int userId, int role)
         {
             try
             {
-                string location = role == 2 ? $"item/{userId}" : $"manufacturer/{userId}";
+                string location = role == 3 ? $"item/{userId}" : $"manufacturer/{userId}";
                 string filePath = Path.Combine(_rootLocation, location, $"{userId}.jpg");
 
                 if (!File.Exists(filePath))
                 {
                     // возвращаем стандартное фото, если фото пользователя не существует
-                    filePath = Path.Combine(_rootLocation, "profileIcon.jpg");
+                    filePath = Path.Combine(_rootLocation, "profileIcon.png");
                 }
 
                 // Читаем файл и возвращаем как поток

@@ -345,8 +345,8 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpGet, Route("GetSCountOfCards")]
-    public async Task<ActionResult> GetSCountOfCards(int id)
+    [HttpGet, Route("GetCountOfCards")]
+    public async Task<ActionResult> GetCountOfCards(int id)
     {
         try
         {

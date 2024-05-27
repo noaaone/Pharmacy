@@ -212,6 +212,12 @@ public class AdminController : ControllerBase
                     _logger.LogInformation("Количество должно быть положительным");
                     return UnprocessableEntity("Количество должно быть положительным");
                 }
+                var sr = new ItemsRepository();
+                if (sr.GetItemByItemName(request.ItemName)!=null)
+                {
+                    _logger.LogInformation("Товар с таким именем уже существует");
+                    return UnprocessableEntity("Товар с таким именем уже существует");
+                }
                 var ar = new AdminRepository();
                 if (ar.IsThereThisManufacturer(request.ManufacturerId) == false)
                 {
@@ -224,10 +230,11 @@ public class AdminController : ControllerBase
                     _logger.LogInformation("Цена экспертного мнения должна быть положительной");
                     return UnprocessableEntity("Цена экспертного мнения должна быть положительной");
                 }
-                var sr = new ItemsRepository();
+                
                 sr.WriteItemToDataBase(request.ItemName, request.ManufacturerId, request.Price,request.Quantity, request.ExpertView, request.ExpertViewPrice);
-                sr.AddRecentPrice(new Item(1,request.ItemName, request.ManufacturerId,
-                   request.Price, request.Quantity, request.ExpertView, request.ExpertViewPrice));
+                
+                sr.AddRecentPrice(sr.GetItemByItemName(request.ItemName));
+                   
                 
                 _logger.LogInformation("Товар добавлен");
                 return Ok("Товар добавлен");
