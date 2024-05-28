@@ -459,6 +459,14 @@ public class AdminController : ControllerBase
             return Ok(ar.GetAllOrders());
         }
         
+        [HttpGet, Route("GetUserOrders")]
+        public async Task<ActionResult> GetUserOrders(int userId)
+        {
+            var ar = new ItemsRepository();
+            _logger.LogInformation("Список заказов получен");
+            return Ok(ar.GetUserOrders(userId));
+        }
+        
         [HttpPut, Route("EditOrderStatus")]
         public async Task<ActionResult> EditOrderStatus([FromBody] EditOrderStatusRequest request)
         {

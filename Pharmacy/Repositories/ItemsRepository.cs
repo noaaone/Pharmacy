@@ -363,6 +363,35 @@ public class ItemsRepository : RepositoryBase
         return orders;
     }
     
+    public List<Order> GetUserOrders(int userId)
+    {
+        NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+        connection.Open();
+        var sql = "SELECT * FROM pharmacy.order where user_id = @userId";
+        
+        var orders = new List<Order>();
+        using (var command = new NpgsqlCommand(sql, connection))
+        {
+            command.Parameters.AddWithValue(@"userId", userId);
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string orderInfo = reader.GetString(1);
+                    int user_id = reader.GetInt32(2);
+                    string status = reader.GetString(3);
+                    DateTime date = reader.GetDateTime(4);
+                    double fullPrice = reader.GetDouble(5);
+                    
+                    orders.Add(new Order(id, orderInfo,user_id, status, date, fullPrice));
+                }
+            }
+        }
+        connection.Close();
+        return orders;
+    }
+    
     public void CreateOrder(int userId)
     {
         if (GetAllBasket(userId).Count == 0)
