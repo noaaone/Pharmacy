@@ -416,11 +416,10 @@ public class UserController : ControllerBase
     [HttpPost, Route("CreateOrder")]
     public async Task<ActionResult> CreateOrder(int userId)
     {
-        
-            ItemsRepository itemsRepository = new ItemsRepository();
-            itemsRepository.CreateOrder(userId);
-            _logger.LogInformation("Заказ сформирован");
-            return Ok("Заказ сформирован");
+        ItemsRepository itemsRepository = new ItemsRepository();
+        itemsRepository.CreateOrder(userId);
+        _logger.LogInformation("Заказ сформирован");
+        return Ok("Заказ сформирован. Вы сможете следить за его статусом в профиле");
     }
     [HttpGet, Route("GetUserBasket")]
     public async Task<ActionResult> GetUserBasket(int userId)

@@ -387,7 +387,6 @@ public class ItemsRepository : RepositoryBase
     public void DeleteBasketNoRefund(int id)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        connection.Open();
         var sql = "DELETE FROM pharmacy.basket WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
