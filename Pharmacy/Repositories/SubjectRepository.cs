@@ -6,13 +6,13 @@ namespace Pharmacy_.Repositories;
 
 public class SubjectRepository : ISubject 
 {
-    const string connectionString = "Host=localhost;Port=5432;Database=Pharmacy;Username=postgres;Password=postgres;";
+    const string connectionString = "Host=127.0.0.1;Port=5432;Database=kursach;Username=postgres;Password=postgres;";
     
     public void Subscribe(int userId, int itemId)
     {
         using var connection = new NpgsqlConnection(connectionString);
        
-        var sql = "INSERT INTO pharmacy.subscriptions (user_id, item_id) " +
+        var sql = "INSERT INTO public.subscriptions (user_id, item_id) " +
                   "VALUES (@userId, @itemId)";
 
         using var command = new NpgsqlCommand(sql, connection);
@@ -28,7 +28,7 @@ public class SubjectRepository : ISubject
     public void Unsubscribe(int userId, int itemId)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.subscriptions WHERE user_id = @id and item_id = @itemId";
+        var sql = "DELETE FROM public.subscriptions WHERE user_id = @id and item_id = @itemId";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", userId);
         command.Parameters.AddWithValue("@itemId", itemId);
@@ -41,7 +41,7 @@ public class SubjectRepository : ISubject
     {
         using var connection = new NpgsqlConnection(connectionString);
        
-        var sql = "INSERT INTO pharmacy.notifications (text, user_id,date) " +
+        var sql = "INSERT INTO public.notifications (text, user_id,date) " +
                   "VALUES (@notification, @userId,@date)";
 
         using var command = new NpgsqlCommand(sql, connection);
@@ -61,7 +61,7 @@ public class SubjectRepository : ISubject
         using (var connection = new NpgsqlConnection(connectionString))
         {
             connection.Open();
-            var sql = "SELECT user_id FROM pharmacy.subscriptions WHERE item_id = @item_id";
+            var sql = "SELECT user_id FROM public.subscriptions WHERE item_id = @item_id";
             using (var command = new NpgsqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("@item_id", itemId);
@@ -83,7 +83,7 @@ public class SubjectRepository : ISubject
     public void DeleteNotificationById(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.notifications WHERE id = @id ";
+        var sql = "DELETE FROM public.notifications WHERE id = @id ";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         connection.Open();
@@ -95,7 +95,7 @@ public class SubjectRepository : ISubject
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         List<Notification> notifications = new List<Notification>();
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.notifications WHERE user_id = @user_id";
+        var sql = "SELECT * FROM public.notifications WHERE user_id = @user_id";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("user_id", userId);
@@ -121,7 +121,7 @@ public class SubjectRepository : ISubject
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT COUNT(*) FROM pharmacy.notifications WHERE user_id = @user_id";
+        var sql = "SELECT COUNT(*) FROM public.notifications WHERE user_id = @user_id";
         int count;
         using (var command = new NpgsqlCommand(sql, connection))
         {

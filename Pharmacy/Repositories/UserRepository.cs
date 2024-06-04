@@ -14,7 +14,7 @@ public class UserRepository : RepositoryBase
         var user = new User(1, login, password, 0, salt, 1,false, false);
         using var connection = new NpgsqlConnection(connectionString);
        
-        var sql = "INSERT INTO pharmacy.users (login, password, balance, salt, role, is_deleted, is_blocked) " +
+        var sql = "INSERT INTO public.users (login, password, balance, salt, role, is_deleted, is_blocked) " +
                   "VALUES (@login, @password, @balance, @salt, @role, @is_deleted, @is_blocked)";
 
         using var command = new NpgsqlCommand(sql, connection);
@@ -34,7 +34,7 @@ public class UserRepository : RepositoryBase
     public bool IsLoginUnique(string login)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT COUNT(*) FROM pharmacy.users WHERE login = @login";
+        var sql = "SELECT COUNT(*) FROM public.users WHERE login = @login";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@login", login);
         OpenConnection(connection);
@@ -52,7 +52,7 @@ public class UserRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         User user;
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.users WHERE login = @login AND password = @password";
+        var sql = "SELECT * FROM public.users WHERE login = @login AND password = @password";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("login", login);
@@ -83,7 +83,7 @@ public class UserRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT salt FROM pharmacy.users WHERE login = @name";
+        var sql = "SELECT salt FROM public.users WHERE login = @name";
         string salt = null;
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -106,7 +106,7 @@ public class UserRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         User user;
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.users WHERE id = @userId";
+        var sql = "SELECT * FROM public.users WHERE id = @userId";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("userId", userId);
@@ -136,7 +136,7 @@ public class UserRepository : RepositoryBase
     public void ChangeUserName(int id, string newLogin)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET login = @newLogin WHERE id = @id";
+        var sql = "UPDATE public.users SET login = @newLogin WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@newLogin", newLogin);
@@ -147,7 +147,7 @@ public class UserRepository : RepositoryBase
     public void ChangePassword(int id, string password, string oldPassword)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET password = @password WHERE id = @id";
+        var sql = "UPDATE public.users SET password = @password WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@password", password);
@@ -160,7 +160,7 @@ public class UserRepository : RepositoryBase
     public void AddPasswordInHistoryList(int userId, string password)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.recent_passwords  (password, user_id) VALUES (@password, @user_id)";
+        var sql = "INSERT INTO public.recent_passwords  (password, user_id) VALUES (@password, @user_id)";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@user_id", userId);
         command.Parameters.AddWithValue("@password", password);
@@ -174,7 +174,7 @@ public class UserRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         List<RecentPasswords> passwords = new List<RecentPasswords>();
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.recent_passwords WHERE user_id = @user_id";
+        var sql = "SELECT * FROM public.recent_passwords WHERE user_id = @user_id";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("user_id", userId);
@@ -198,7 +198,7 @@ public class UserRepository : RepositoryBase
         var ar = new AdminRepository();
         ar.ChangeUserBalance(id,GetUserById(id).Balance + sumOfDep);
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.deposits (date, sum_of_deposit, user_id) VALUES (@date, @sum, @user_id)";
+        var sql = "INSERT INTO public.deposits (date, sum_of_deposit, user_id) VALUES (@date, @sum, @user_id)";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@date", DateTime.Now);
         command.Parameters.AddWithValue("@sum", sumOfDep);

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Business_monitoring.Services.AdminService" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACIAAFAAgAlUAAAAAAABAEAIAEAEFAAAQECAgA=</HashCode>
+      <FileName>Services\AdminService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Services.CompanyService" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABEAgAAIAIABAQAAAEAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\CompanyService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Services.ExpertService" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAgAAgAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ExpertService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Services.PhotoService" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\PhotoService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Services.SubscriptionService" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgIAABAEAAAAAAAAAAAAAEAgABAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\SubscriptionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Services.UserService" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAKBAJAojSwCAAAxAKUYAUCADDBCQNSCDBiBAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_monitoring.Data.Context">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCgAURwAAAAAEABQAAIAAAAAAAAAgAEBAACAAA=</HashCode>
+      <FileName>Data\Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Notification">
+    <Position X="13" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Offer">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAEIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Offer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Owners">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Owners.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.PricesOfShares">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\PricesOfShares.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.PurchaceOfView">
+    <Position X="11.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PurchaceOfView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.RecentPasswords">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RecentPasswords.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.RecentPricesOfBusiness">
+    <Position X="11.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RecentPricesOfBusiness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Subscription">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Subscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.UserModel">
+    <Position X="13" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAEAgAAAAAAAAAAgACAAAQAQAAAAA=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.BaseEntity">
+    <Position X="11.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Business_monitoring.Models.Business">
+    <Position X="7.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAEQAAAAAAEEAAAABBAAIAAA=</HashCode>
+      <FileName>Models\Business.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Card">
+    <Position X="9.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAADAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Company">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAACAAAAAAAAAAAAAAAAAAAgACAAAQIQAAAAA=</HashCode>
+      <FileName>Models\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Deposits">
+    <Position X="13" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Deposits.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.Expert">
+    <Position X="9.5" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Business_monitoring.Models.BaseEntity" FixedToPoint="true">
+      <Path>
+        <Point X="12" Y="7.25" />
+        <Point X="12" Y="7.122" />
+        <Point X="11.128" Y="7.122" />
+        <Point X="11.128" Y="7.764" />
+        <Point X="9.308" Y="7.764" />
+        <Point X="9.308" Y="6.113" />
+        <Point X="9.5" Y="6.113" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAAAAAAAAAAAAAAgADAAAQAQAAAAA=</HashCode>
+      <FileName>Models\Expert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.ExpertView">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAABAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ExpertView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.GainsOfCompany">
+    <Position X="11.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABEAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GainsOfCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_monitoring.Models.LoginHistory">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\LoginHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Business_monitoring.Services.Interfaces.IUserService">
+    <Position X="16.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACBAAAgDCAAAAAwACAAAACADCBCQMQCDAiBAA=</HashCode>
+      <FileName>Services\Interfaces\IUserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business_monitoring.Services.Interfaces.IAdminService">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAEAAAAFUAAAAAAABAEAIAEAEFAAAQECAgA=</HashCode>
+      <FileName>Services\Interfaces\IAdminService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business_monitoring.Services.Interfaces.ICompanyService">
+    <Position X="20.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAIAIAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\ICompanyService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business_monitoring.Services.Interfaces.IExpertService">
+    <Position X="18.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IExpertService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business_monitoring.Services.Interfaces.IPhotoService">
+    <Position X="16.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IPhotoService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business_monitoring.Services.Interfaces.ISubscriptionService">
+    <Position X="16.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAEAAAAAAAAAAAAAAAgABAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\ISubscriptionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

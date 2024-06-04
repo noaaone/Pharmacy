@@ -11,7 +11,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.items";
+        var sql = "SELECT * FROM public.items";
         List<Item> items = new List<Item>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -38,7 +38,7 @@ public class ItemsRepository : RepositoryBase
     public Item GetItemById(int itemId)
     {
         var connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT * FROM pharmacy.items WHERE @id = id";
+        var sql = "SELECT * FROM public.items WHERE @id = id";
         connection.Open();
         using (var command = new NpgsqlCommand(sql,connection))
         {
@@ -66,7 +66,7 @@ public class ItemsRepository : RepositoryBase
     public Item GetItemByItemName(string name)
     {
         var connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT * FROM pharmacy.items WHERE @name = item_name";
+        var sql = "SELECT * FROM public.items WHERE @name = item_name";
         connection.Open();
         using (var command = new NpgsqlCommand(sql,connection))
         {
@@ -93,7 +93,7 @@ public class ItemsRepository : RepositoryBase
     public void DeleteItem(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.items WHERE id = @id";
+        var sql = "DELETE FROM public.items WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -106,7 +106,7 @@ public class ItemsRepository : RepositoryBase
         
         
         var item = new Item(1, itemName, manufacturerId,  price,quantity, expertView, priceOfExpert);
-        var sql = "INSERT INTO pharmacy.items (item_name, manufacturer_id, price, quantity, expert_view, expert_view_price) " +
+        var sql = "INSERT INTO public.items (item_name, manufacturer_id, price, quantity, expert_view, expert_view_price) " +
                   "VALUES (@item_name, @manufacturer_id, @price, @quantity, @expertView, @expertViewPrice)";
 
         using var connection = new NpgsqlConnection(connectionString);
@@ -129,7 +129,7 @@ public class ItemsRepository : RepositoryBase
     public void AddRecentPrice(Item item)
     {
         var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.recent_prices (price, date, item_id)" +
+        var sql = "INSERT INTO public.recent_prices (price, date, item_id)" +
                   " VALUES (@price, @date, @itemId)";
         var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@price", item.Price);
@@ -144,7 +144,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.recent_prices WHERE item_id = @id";
+        var sql = "SELECT * FROM public.recent_prices WHERE item_id = @id";
         List<RecentPrices> prices = new List<RecentPrices>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -171,7 +171,7 @@ public class ItemsRepository : RepositoryBase
         var ur = new UserRepository();
         ar.ChangeUserBalance(userId,ur.GetUserById(userId).Balance - priceOfView);
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.purchases_of_view  (price, user_id, item_id) VALUES (@price, @user_id, @item_id)";
+        var sql = "INSERT INTO public.purchases_of_view  (price, user_id, item_id) VALUES (@price, @user_id, @item_id)";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@price", priceOfView);
         command.Parameters.AddWithValue("@user_id", userId);
@@ -184,7 +184,7 @@ public class ItemsRepository : RepositoryBase
     public bool IsAlreadyBought(int userId, int itemId)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT COUNT(*) FROM pharmacy.purchases_of_view WHERE user_id = @userId and item_id= @itemId";
+        var sql = "SELECT COUNT(*) FROM public.purchases_of_view WHERE user_id = @userId and item_id= @itemId";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@userId", userId);
         command.Parameters.AddWithValue("@itemId", itemId);
@@ -197,7 +197,7 @@ public class ItemsRepository : RepositoryBase
     public string GetExpertView(int itemId)
     {
         var connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT expert_view FROM pharmacy.items WHERE @id = id";
+        var sql = "SELECT expert_view FROM public.items WHERE @id = id";
         connection.Open();
         using (var command = new NpgsqlCommand(sql,connection))
         {
@@ -220,7 +220,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.items WHERE manufacturer_id = @manufacturerId";
+        var sql = "SELECT * FROM public.items WHERE manufacturer_id = @manufacturerId";
         List<Item> items = new List<Item>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -254,7 +254,7 @@ public class ItemsRepository : RepositoryBase
             throw new Exception("Нет такого пользователя");
         
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.basket  (quantity, price, user_id, item_id) " +
+        var sql = "INSERT INTO public.basket  (quantity, price, user_id, item_id) " +
                   "VALUES (@quantity ,@price, @user_id, @item_id)";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@quantity", request.Quantity);
@@ -272,7 +272,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql1 = "SELECT * FROM pharmacy.basket WHERE id = @id";
+        var sql1 = "SELECT * FROM public.basket WHERE id = @id";
         using (var command1 = new NpgsqlCommand(sql1, connection))
         {
             command1.Parameters.AddWithValue("@id",id);
@@ -303,7 +303,7 @@ public class ItemsRepository : RepositoryBase
         UpdateItem(basketItem.ItemId, item1.Quantity+basketItem.Quantity);
         
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.basket WHERE id = @id";
+        var sql = "DELETE FROM public.basket WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -314,7 +314,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.basket WHERE user_id = @userId";
+        var sql = "SELECT * FROM public.basket WHERE user_id = @userId";
         var items = new List<Basket>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -340,7 +340,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.order";
+        var sql = "SELECT * FROM public.order";
         var orders = new List<Order>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -367,7 +367,7 @@ public class ItemsRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.order where user_id = @userId";
+        var sql = "SELECT * FROM public.order where user_id = @userId";
         
         var orders = new List<Order>();
         using (var command = new NpgsqlCommand(sql, connection))
@@ -416,7 +416,7 @@ public class ItemsRepository : RepositoryBase
     public void DeleteBasketNoRefund(int id)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.basket WHERE id = @id";
+        var sql = "DELETE FROM public.basket WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -425,11 +425,11 @@ public class ItemsRepository : RepositoryBase
     }
     public void ChangeQuantityOfItem(int itemId, double quantity)
     {
-        const string connectionString = "Host=localhost;Port=5432;Database=Pharmacy;Username=postgres;Password=postgres;";
+        const string connectionString = "Host=127.0.0.1;Port=5432;Database=kursach;Username=postgres;Password=postgres;";
         var connection = new NpgsqlConnection(connectionString);
         var sr = new SubjectRepository();
         ItemsRepository repository = new ItemsRepository();
-        var sql = "UPDATE pharmacy.items SET quantity = @quantity WHERE id = @id";
+        var sql = "UPDATE public.items SET quantity = @quantity WHERE id = @id";
         var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", itemId);
         command.Parameters.AddWithValue("@quantity", quantity);
@@ -441,7 +441,7 @@ public class ItemsRepository : RepositoryBase
     public void UpdateItem(int itemId, int quantity)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.items SET quantity = @quantity WHERE id = @id";
+        var sql = "UPDATE public.items SET quantity = @quantity WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", itemId);
         command.Parameters.AddWithValue("@quantity", quantity);
@@ -453,7 +453,7 @@ public class ItemsRepository : RepositoryBase
     public void WriteOrderToDatabase(int userId, string order, double fullPrice)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "INSERT INTO pharmacy.order  (order_info, user_id, status, date, full_price) " +
+        var sql = "INSERT INTO public.order  (order_info, user_id, status, date, full_price) " +
                   "VALUES (@orderInfo ,@user_id, @status, @date, @fullPrice)";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@orderInfo", order);

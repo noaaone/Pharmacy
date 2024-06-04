@@ -4,7 +4,8 @@ namespace Pharmacy_.Repositories;
 
 public class RepositoryBase
 {
-    protected const string connectionString = "Host=localhost;Port=5432;Database=Pharmacy;Username=postgres;Password=postgres;";
+    protected const string connectionString = "Host=127.0.0.1;Port=5432;Database=kursach;Username=postgres;Password=postgres;";
+
 
     protected void OpenConnection(NpgsqlConnection connection)
     {

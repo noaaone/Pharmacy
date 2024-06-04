@@ -59,7 +59,7 @@ public class AuthorizationRepository: RepositoryBase
         {
             string? ipAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList
                 .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)?.ToString();
-            var sql = "INSERT INTO pharmacy.login_history (ip, date, user_id) " +
+            var sql = "INSERT INTO public.login_history (ip, date, user_id) " +
                       "VALUES (@ip, @date, @user_id)";
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             using var command = new NpgsqlCommand(sql, connection);

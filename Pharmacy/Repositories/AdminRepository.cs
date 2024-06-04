@@ -9,7 +9,7 @@ public class AdminRepository : RepositoryBase
     public void SetUserStatusDel(int id, bool isDeleted)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET is_deleted = @isDeleted WHERE id = @id";
+        var sql = "UPDATE public.users SET is_deleted = @isDeleted WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@isDeleted", isDeleted);
@@ -21,7 +21,7 @@ public class AdminRepository : RepositoryBase
     public void SetUserStatusBlock(int id, bool isBlocked)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET is_blocked = @isBlocked WHERE id = @id";
+        var sql = "UPDATE public.users SET is_blocked = @isBlocked WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@isBlocked", isBlocked);
@@ -33,7 +33,7 @@ public class AdminRepository : RepositoryBase
     public void DeleteUser(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.users WHERE id = @id";
+        var sql = "DELETE FROM public.users WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -46,7 +46,7 @@ public class AdminRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         User user;
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.users";
+        var sql = "SELECT * FROM public.users";
         List<User> users = new List<User>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -74,7 +74,7 @@ public class AdminRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.manufacturers";
+        var sql = "SELECT * FROM public.manufacturers";
         List<Manufacturer> manufacturers = new List<Manufacturer>();
         using (var command = new NpgsqlCommand(sql, connection))
         {
@@ -98,7 +98,7 @@ public class AdminRepository : RepositoryBase
     /*public void EditUser(int id,User user)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET (login, password, balance, salt, role, is_deleted, is_blocked) " +
+        var sql = "UPDATE public.users SET (login, password, balance, salt, role, is_deleted, is_blocked) " +
                   "= (@login, @password, @balance, @salt, @role, @is_deleted, @is_blocked) WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@login", user.Login);
@@ -118,7 +118,7 @@ public class AdminRepository : RepositoryBase
     public void WriteNewManufacturerToDatabase(string name, string country, string phone, string email)
     {
         var manufacturer = new Manufacturer(1, name, country, phone, email);
-        var sql = "INSERT INTO pharmacy.manufacturers (name, country, phone, email) " +
+        var sql = "INSERT INTO public.manufacturers (name, country, phone, email) " +
                   "VALUES (@name, @country, @phone, @email)";
 
         using var connection = new NpgsqlConnection(connectionString);
@@ -137,7 +137,7 @@ public class AdminRepository : RepositoryBase
     public void DeleteManufacturer(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.manufacturers WHERE id = @id";
+        var sql = "DELETE FROM public.manufacturers WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -147,7 +147,7 @@ public class AdminRepository : RepositoryBase
     public bool IsThereThisManufacturer(int manufacturerId)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT COUNT(*) FROM pharmacy.manufacturers WHERE id = @manufacturerId";
+        var sql = "SELECT COUNT(*) FROM public.manufacturers WHERE id = @manufacturerId";
         var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("manufacturerId", manufacturerId);
         OpenConnection(connection);
@@ -159,7 +159,7 @@ public class AdminRepository : RepositoryBase
     public void ChangeUserRole(int id, int role)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET role = @role WHERE id = @id";
+        var sql = "UPDATE public.users SET role = @role WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@role", role);
@@ -170,7 +170,7 @@ public class AdminRepository : RepositoryBase
     public void ChangeUserBalance(int id, double balance)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.users SET balance = @balance WHERE id = @id";
+        var sql = "UPDATE public.users SET balance = @balance WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         command.Parameters.AddWithValue("@balance", balance);
@@ -182,7 +182,7 @@ public class AdminRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         List<LoginHistory> loginHistories = new List<LoginHistory>();
-        var sql = "SELECT * FROM pharmacy.login_history WHERE user_id = @userID ";
+        var sql = "SELECT * FROM public.login_history WHERE user_id = @userID ";
         OpenConnection(connection);
         using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
         {
@@ -207,7 +207,7 @@ public class AdminRepository : RepositoryBase
     {
         DeletePurchases(id);
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.items SET (expert_view,expert_view_price) " +
+        var sql = "UPDATE public.items SET (expert_view,expert_view_price) " +
                   "= (@view,@price) WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
@@ -221,7 +221,7 @@ public class AdminRepository : RepositoryBase
     public void DeletePurchases(int itemId)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.purchases_of_view WHERE item_id = @id";
+        var sql = "DELETE FROM public.purchases_of_view WHERE item_id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", itemId);
         OpenConnection(connection);
@@ -234,7 +234,7 @@ public class AdminRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         Manufacturer manufacturer;
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.manufacturers WHERE id = @manufacturerId";
+        var sql = "SELECT * FROM public.manufacturers WHERE id = @manufacturerId";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("manufacturerId", manufacturerId);
@@ -262,7 +262,7 @@ public class AdminRepository : RepositoryBase
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         connection.Open();
-        var sql = "SELECT name FROM pharmacy.manufacturers WHERE id = @manufacturerId";
+        var sql = "SELECT name FROM public.manufacturers WHERE id = @manufacturerId";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("manufacturerId", id);
@@ -286,7 +286,7 @@ public class AdminRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         List<Deposit> deposits = new List<Deposit>();
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.deposits WHERE user_id = @userId";
+        var sql = "SELECT * FROM public.deposits WHERE user_id = @userId";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("userId", userId);
@@ -313,7 +313,7 @@ public class AdminRepository : RepositoryBase
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
         List<Purchase> purchases = new List<Purchase>();
         connection.Open();
-        var sql = "SELECT * FROM pharmacy.purchases_of_view WHERE user_id = @userId";
+        var sql = "SELECT * FROM public.purchases_of_view WHERE user_id = @userId";
         using (var command = new NpgsqlCommand(sql, connection))
         {
             command.Parameters.AddWithValue("userId", userId);
@@ -338,7 +338,7 @@ public class AdminRepository : RepositoryBase
     public void EditOrderStatus(EditOrderStatusRequest request)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "UPDATE pharmacy.order SET status " +
+        var sql = "UPDATE public.order SET status " +
                   "= @status WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", request.OrderId);
@@ -350,7 +350,7 @@ public class AdminRepository : RepositoryBase
     public void DeleteOrder(int orderId)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "Delete from pharmacy.order WHERE id = @id";
+        var sql = "Delete from public.order WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", orderId);
         OpenConnection(connection);

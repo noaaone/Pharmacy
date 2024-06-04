@@ -7,11 +7,11 @@ public class ObserverRepository : IObserver
 {
     public void ChangePrice(int itemId, double price)
     {
-        const string connectionString = "Host=localhost;Port=5432;Database=Pharmacy;Username=postgres;Password=postgres;";
+        const string connectionString = "Host=127.0.0.1;Port=5432;Database=kursach;Username=postgres;Password=postgres;";
         var connection = new NpgsqlConnection(connectionString);
         var sr = new SubjectRepository();
         ItemsRepository repository = new ItemsRepository();
-        var sql = "UPDATE pharmacy.items SET price = @price WHERE id = @id";
+        var sql = "UPDATE public.items SET price = @price WHERE id = @id";
         var command = new NpgsqlCommand(sql, connection);
         foreach (var subscriber in sr.GetSubscribesList(itemId))
         {

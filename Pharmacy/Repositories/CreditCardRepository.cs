@@ -111,7 +111,7 @@ public class CreditCardRepository : RepositoryBase
     
     public void WriteNewCreditCardToDatabase(int userId,string cardNumber, string name, string date,int cvv)
     {
-        var sql = "INSERT INTO pharmacy.cards (card_number, name, date, cvv, user_id) " +
+        var sql = "INSERT INTO public.cards (card_number, name, date, cvv, user_id) " +
                   "VALUES (@cardNumber, @name, @date, @cvv, @userId)";
         using var connection = new NpgsqlConnection(connectionString);
         using var command = new NpgsqlCommand(sql, connection);
@@ -128,7 +128,7 @@ public class CreditCardRepository : RepositoryBase
     public void DeleteCreditCard(int id)
     {
         using var connection = new NpgsqlConnection(connectionString);
-        var sql = "DELETE FROM pharmacy.cards WHERE id = @id";
+        var sql = "DELETE FROM public.cards WHERE id = @id";
         using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.AddWithValue("@id", id);
         OpenConnection(connection);
@@ -139,7 +139,7 @@ public class CreditCardRepository : RepositoryBase
     public List<string> GetNumberOfCardsOfUser(int id)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT card_number FROM pharmacy.cards WHERE user_id = @id";
+        var sql = "SELECT card_number FROM public.cards WHERE user_id = @id";
         var cardsList = new List<string>();
         OpenConnection(connection);
         using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
@@ -160,7 +160,7 @@ public class CreditCardRepository : RepositoryBase
     public List<Card> GetCardsOfUser(int id)
     {
         NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-        var sql = "SELECT * FROM pharmacy.cards WHERE user_id = @id";
+        var sql = "SELECT * FROM public.cards WHERE user_id = @id";
         var cardsList = new List<Card>();
         OpenConnection(connection);
         using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
@@ -188,7 +188,7 @@ public class CreditCardRepository : RepositoryBase
     {
         using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
         {
-            var sql = "SELECT COUNT(*) FROM pharmacy.cards WHERE user_id = @userId";
+            var sql = "SELECT COUNT(*) FROM public.cards WHERE user_id = @userId";
             var command = new NpgsqlCommand(sql, connection);
             command.Parameters.AddWithValue("userId", id);
             OpenConnection(connection);
